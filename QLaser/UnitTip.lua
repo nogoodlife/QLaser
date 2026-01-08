@@ -3,7 +3,7 @@ function QLaser:unitTipInit()
 end
 
 function QLaser.filterNote(note)
-        local result = note:sub(1, 18)
+        local result = note:utf8sub(1, 18)
     return result
 end
 
@@ -44,3 +44,4 @@ function QLaser.HookSetUnit()
         GameTooltip:AddLine(unitTip, 0.8, 0.8, 0.8)
     end
 end
+
