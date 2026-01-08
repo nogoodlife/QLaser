@@ -3,7 +3,7 @@ function QLaser:unitTipInit()
 end
 
 function QLaser.filterNote(note)
-        local result = note:utf8sub(1, 18)
+	local result = note:utf8sub(1, 18)
     return result
 end
 
@@ -17,11 +17,9 @@ function QLaser.HookSetUnit()
         local mainNote = QDKP2_LaserNote[main]
         local filteredmainNote = QLaser.filterNote(mainNote)
 
-        local unitTip = "|cffffff00QDKP_Alts "..QLaser.version.."|r\n"
+        local unitTip = ("|cffffff00-----QDKP_Alts "..QLaser.version.."-----|r\n")
 
-        unitTip = unitTip .. ("|cffffff00-----------------------------|r\n")
-
-        unitTip = unitTip .. "" .. mainColored .. "|cFF40E0D0 [Main] |r" .. (QDKP2online[main] and "|cff00ff00Online|r" or "|cffa6a6a6Offline|r") .. " ".. filteredmainNote .. "\n";
+        unitTip = unitTip .. mainColored .. "|cFF40E0D0 [Main] |r" .. (QDKP2online[main] and "|cff00ff00Online|r" or "|cffa6a6a6Offline|r") .. " ".. filteredmainNote .. "\n";
 
         if QDKP2_LaserAlts[main] ~= nil then
             for alt in pairs(QDKP2_LaserAlts[main]) do
@@ -34,14 +32,11 @@ function QLaser.HookSetUnit()
                 else
                     unitTip = unitTip .. altColored .. " " .. (QDKP2online[alt] and "|cff00ff00Online|r" or "|cffa6a6a6Offline|r") .. " ".. filteredaltNote .. "\n";
                 end
-                
             end
         end
 
-        unitTip = unitTip .. ("|cffffff00-----------------------------|r\n")
-        unitTip = unitTip .. " >> DKP: |cff33ffcc" .. QDKP2_GetNet(main) .. "|r <<"
-
+        unitTip = unitTip .. ("|cffffff00------------------------------|r\n")
+        unitTip = unitTip .. ">> DKP: |cff33ffcc" .. QDKP2_GetNet(main) .. "|r <<"
         GameTooltip:AddLine(unitTip, 0.8, 0.8, 0.8)
     end
 end
-
